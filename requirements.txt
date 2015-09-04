@@ -1,6 +1,12 @@
 
-Django==1.8.4
-ipdb==0.8.1
-psycopg2==2.6.1
-pytz==2015.4
-Pillow==2.9.0
+Django==1.8.4  # for a good life
+
+gspread==0.2.5  # reading google spreadsheets
+ipdb==0.8.1  # for debugging
+oauth2client==1.5.0  # for logging into google sheets
+Pillow==2.9.0  # for image manipulation
+psycopg2==2.6.1  # for connecting to postgres
+pytz==2015.4  # for timezone aware dates
+pyOpenSSL==0.15.1
+
+django-extensions==1.5.6  # for running scripts in Django context
