@@ -24,6 +24,9 @@ class Person(models.Model):
     created = models.DateTimeField(editable=False, null=False, blank=False)
     modified = models.DateTimeField(editable=False, null=False, blank=False)
 
+    def __unicode__(self):
+        return u'%s (%s)' % (self.name, self.pk)
+
     def save(self, *args, **kwargs):
         """
         On save, update timestamps
