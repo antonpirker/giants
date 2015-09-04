@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'django_extensions',
+    'easy_thumbnails',
     'giants',
 )
 
@@ -117,5 +118,12 @@ MEDIA_ROOT = os.path.abspath(os.path.join(BASE_DIR, 'media'))
 # Giants settings
 
 SHORT_DESC_LENGTH = 40
+
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'admin_thumbnail': {'size': (60, 60), 'crop': True, 'upscale': True},
+    },
+}
 
 

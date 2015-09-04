@@ -1,6 +1,7 @@
 
 Django==1.8.4  # for a good life
 django-extensions==1.5.6  # for running scripts in Django context
+easy-thumbnails==2.2  # for easy thumbnailing
 gspread==0.2.5  # reading google spreadsheets
 ipdb==0.8.1  # for debugging
 lxml==3.4.4  # for parsing html/xml
