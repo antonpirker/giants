@@ -117,12 +117,12 @@ MEDIA_ROOT = os.path.abspath(os.path.join(BASE_DIR, 'media'))
 
 # Giants settings
 
-SHORT_DESC_LENGTH = 40
+SHORT_DESC_LENGTH = 80
 
 
 THUMBNAIL_ALIASES = {
     '': {
-        'admin_thumbnail': {'size': (60, 60), 'crop': True, 'upscale': True},
+        'admin_thumbnail': {'size': (60, 60), 'crop': ',10', 'upscale': True},
     },
 }
 

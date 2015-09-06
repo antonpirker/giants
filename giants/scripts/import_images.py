@@ -25,14 +25,17 @@ def run():
     max_id = Person.objects.all().order_by('-pk')[0].pk
 
     for idx in range(0, max_id):
-
         try:
             person = Person.objects.get(pk=idx)
             person_name = person.wikipedia_link.split('/')[-1]
 
             try:
                 page = requests.get(WIKI_LINK % person_name)
-                image_name = re.search('image([^\=]+)([=]+)([^\|]+)', page.text.replace('\\n', '')).group(3).lstrip().rstrip()
+
+                try:
+                    image_name = re.search('image([^\=]*)([=]+)([^\|]*)', page.text.replace('\\n', '')).group(3).lstrip().rstrip()
+                except AttributeError:
+                    image_name = re.search('File([^\:]*)([:]+)([^\|]*)', page.text.replace('\\n', '')).group(3).lstrip().rstrip()
 
                 page = requests.get(COMMONS_LINK % image_name)
                 tree = html.fromstring(page.text.replace('encoding', 'bla'))  # because lxml does not like it if there is a encoding definition

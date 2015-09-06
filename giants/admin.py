@@ -29,7 +29,11 @@ class PersonAdmin(admin.ModelAdmin):
     def thumbnail(self, obj):
         if obj.image:
             thumb_url = get_thumbnailer(obj.image)['admin_thumbnail'].url
-            return '<img src="%s" />' % thumb_url
+
+            if thumb_url:
+                return '<img src="%s" />' % thumb_url
+            else:
+                return ''
         else:
             return ''
 
