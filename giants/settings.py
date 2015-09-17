@@ -28,6 +28,7 @@ SECRET_KEY = 'm3xjd%!_b%_%3s@zie8bu5l8e&avyqc^6q8ace$y*a2kb0ygcd'
 DEBUG = True
 
 SITE_URL = 'http://www.giantsofit.org'
+SITE_NAME = 'Giants of IT'
 
 ALLOWED_HOSTS = [
     'localhost:8000',

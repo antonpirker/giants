@@ -1,6 +1,7 @@
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
+    {% block meta %}{% endblock meta %}
     <style>
         /*
         Color Palette:
@@ -127,7 +128,7 @@
         }
     </style>
 
-    <title>{% block site_title %}Giants of IT{% endblock site_title %}</title>
+    <title>{% block site_title %}{{ SITE_NAME }}{% endblock site_title %}</title>
 
     <link href="http://fonts.googleapis.com/css?family=Bevan" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet" type="text/css">
@@ -135,7 +136,7 @@
 
 <body>
     <header>
-        <h2>Giants of IT</h2>
+        <h2>{{ SITE_NAME }}</h2>
         <p>
             We all stand on the shoulders of giants. Here are the giants of IT. One each day.
         </p>

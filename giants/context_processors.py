@@ -4,4 +4,12 @@ from django.conf import settings
 
 
 def site(request):
-    return {'SITE_URL': settings.SITE_URL}
+    """
+    Adds some useful information to the template context
+    """
+    context = {
+        'SITE_URL': settings.SITE_URL,
+        'SITE_NAME': settings.SITE_NAME,
+    }
+
+    return context
