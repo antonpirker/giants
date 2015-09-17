@@ -21,7 +21,7 @@ def home(request):
     return redirect(giant_url)
 
 
-def person(request, template_name='index.html', month=None, day=None):
+def person(request, template_name='person.html', month=None, day=None):
     """
     Displays one person.
     """

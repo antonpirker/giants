@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+
+{% block content %}
+    <span>{{ current_date|date:"F jS" }}</span>
+    <h1>{{ person.name|title }}</h1>
+    <p class="image">
+        <button type="button" class="prev">Previous</button>
+        <button type="button" class="next">Next</button>
+        <img src="{{ person.image|thumbnail_url:"big_image" }}" alt="{{ person.name }} - {{ person.description }}" />
+    <p>
+    <p>
+        {{ person.description }}
+        <span>
+            <a href="{{ person.wikipedia_link }}" target="_blank">More information about {{ person.name|title }} on Wikipedia</a>
+            {% if person.additional_link %}
+                <br/>
+                <a href="{{ person.additional_link }}" target="_blank">Another link to {{ person.name|title }}. (Check it out, it's worthwhile)</a>
+            {% endif %}
+        </span>
+    </p>
+{% endblock content %}
