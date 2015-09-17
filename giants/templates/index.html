@@ -1,0 +1,174 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        /*
+        Color Palette:
+        https://color.adobe.com/Cidade-De-Deus-color-theme-937275/?showPublished=true;
+        */
+        * {
+            box-sizing: border-box;
+            font: 400 16px/1.6 'Pontano Sans', Verdana, Helvetica, sans-serif;
+        }
+        html, body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+        html {
+            background-color: #444;
+            /*background: url(img/giants.jpg) no-repeat center center fixed;*/
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        header {
+            width: 100%;
+            padding: 1vmin;
+            background-color: #924D40;
+            color: #DDD4C2;
+        }
+        header h2, header p {
+            margin: 0;
+        }
+        header a {
+            color: #DDD4C2;;
+        }
+        section {
+            background-color: #DDD4C2;
+            width: 100%;
+            text-align: center;
+            padding: 4em 1em;
+            min-height: 70vmax;
+            max-height: 90vh;
+        }
+        section span, section span a {
+            font-size: 3.5vmin;
+        }
+        section p {
+            font-size: 4.5vmin;
+            margin: 3vw 5vw;
+        }
+        h1 {
+            font: 400 60px/1.3 'Bevan', Georgia, serif;
+            text-transform: uppercase;
+            width: 100%;
+            color: #924D40;
+            font-size: 5.9vmin;
+            margin: 1vmin 0;
+        }
+        h2 {
+            font-size: 3vmin;
+        }
+        h3 {
+            font: 400 60px/1.3 'Bevan', Georgia, serif;
+            color: #444;
+        }
+        img {
+            border-radius: 50%;
+        }
+        @media (max-width: 650px) {
+            img {
+                width: 100%;
+            }
+        }
+        @media (min-width: 450px) {
+            img {
+                width: 400px;
+            }
+        }
+        p span {
+            display: block;
+        }
+        a {
+            color: #924D40;
+        }
+        footer {
+            width: 100%;
+            height: 20vh;
+            padding: 2vmin;
+            color: #fff;
+        }
+        footer a {
+            color: #DDD4C2;
+        }
+        p.image {
+            position: relative;
+            display: block;
+        }
+        button {
+            position: absolute;
+            display: block;
+            height: 200px;
+            width: 200px;
+            line-height: 0px;
+            font-size: 0px;
+            cursor: pointer;
+            background: transparent;
+            background-image: url('img/arrow.svg');
+            background-position: 30% 50%;
+            background-repeat: no-repeat;
+            color: transparent;
+            top: 100px;
+            margin-top: -10px;
+            padding: 0;
+            border: none;
+            outline: none;
+        }
+        button.prev {
+            left: 0vmin;
+        }
+        button.next {
+            -ms-transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+            right: 0vmin;
+        }
+    </style>
+    <title>Giants of IT</title>
+    <link href="http://fonts.googleapis.com/css?family=Bevan" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <header>
+        <h2>Giants of IT</sup></h2>
+        <p>
+            We all stand on the shoulders of giants. Here are the giants of IT. One each day.
+        </p>
+    </header>
+    <section>
+        <span>September 12th</span>
+        <h1>Doug Crockford</h1>
+        <p class="image">
+            <button type="button" class="prev">Previous</button>
+            <button type="button" class="next">Next</button>
+            <img src="img/Douglas_Crockford.jpg"/>
+        <p>
+        <p>
+            This is probably the coolest there is, he invented this and that and also wrote this book. Just a great guy.
+            <span>
+                <a href="http://en.wikipedia.org/wiki/Douglas_Crockford">More information about Doug Crockford on Wikipedia</a>
+            </span>
+        </p>
+    </section>
+
+    <footer>
+        A small side project of <a href="http://www.anton-pirker.at/" target="_blank">Anton Pirker</a> &bull; 'standing on the shoulders of giants' is a <a href="https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants" target="_blank">very old metaphor</a> &bull; Someone is missing in the list? <a href="https://docs.google.com/a/ignaz.at/forms/d/1IcxdJAawj5VrjWcLJgepcelnfaLnQLP_M2QZplCcm44/viewform?usp=send_form" target="blank">Go fill out the form!</a>
+    </footer>
+
+    <script>
+        document.onkeydown = checkKey;
+
+        function checkKey(e) {
+            e = e || window.event;
+
+            if (e.keyCode == '37') {  // left arrow
+               console.log("left");
+            } else if (e.keyCode == '39') {  // right arrow
+               console.log("right");
+            }
+        }
+    </script>
+</body>
+</html>
