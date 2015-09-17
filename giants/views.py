@@ -6,7 +6,7 @@ import time
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.text import slugify
 from django.http import HttpResponseForbidden
-
+from django.template import RequestContext
 
 
 from models import Person
@@ -65,11 +65,12 @@ def person(request, template_name='person.html', month=None, day=None, name=None
     except Person.DoesNotExist:
         person_of_tomorrow = None
 
-    context = {
+    context = RequestContext(request)
+    context.push({
         'person': person_of_today,
         'current_date': current_date,
         'link_prev': person_of_yesterday.get_url() if person_of_yesterday else None,
         'link_next': person_of_tomorrow.get_url() if person_of_tomorrow else None,
-    }
+    })
 
     return render(request, template_name, context)

@@ -2,6 +2,8 @@
 
 {% load static thumbnail %}
 
+{% block site_title %}{{ person.name|title }}, a giant of IT.{% endblock site_title %}
+
 {% block content %}
     <span>{{ current_date|date:"F jS" }}</span>
     <h1>{{ person.name|title }}</h1>
@@ -30,4 +32,12 @@
             {% endif %}
         </span>
     </p>
+    <ul class="social">
+        <li class="fb">
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ SITE_URL }}{{ request.path }}" target="_blank">Facebook</a>
+        </li>
+        <li class="twitter">
+            <a href="https://twitter.com/intent/tweet?url={{ SITE_URL }}{{ request.path }}" target="_blank">twitter</a>
+        </li>
+    </ul>
 {% endblock content %}

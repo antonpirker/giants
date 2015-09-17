@@ -27,6 +27,8 @@ SECRET_KEY = 'm3xjd%!_b%_%3s@zie8bu5l8e&avyqc^6q8ace$y*a2kb0ygcd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SITE_URL = 'http://www.giantsofit.org'
+
 ALLOWED_HOSTS = [
     'localhost:8000',
     'localhost',
@@ -72,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'giants.context_processors.site',
             ],
         },
     },
