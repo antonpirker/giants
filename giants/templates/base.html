@@ -150,17 +150,27 @@
     </footer>
 
     <script>
-        var checkKey = function(e) {
+        var handleArrowKeys = function(e) {
             e = e || window.event;
 
-            if (e.keyCode == '37') {  // left arrow
-               console.log("left");
-            } else if (e.keyCode == '39') {  // right arrow
-               console.log("right");
+            var LEFT = '37',
+                RIGHT = '39';
+
+            if (e.keyCode == LEFT) {
+                try {
+                    var link = document.getElementById('previous-link').href;
+                    location = link;
+                }catch(TypeError) {};
+
+            } else if (e.keyCode == RIGHT) {
+                try {
+                    var link = document.getElementById('next-link').href;
+                    location = link;
+                }catch(TypeError) {};
             }
         };
 
-        document.onkeydown = checkKey;
+        document.onkeydown = handleArrowKeys;
     </script>
 </body>
 </html>

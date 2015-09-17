@@ -7,17 +7,17 @@
     <h1>{{ person.name|title }}</h1>
     <p class="image">
         {% if link_prev %}
-            <a href="{{ link_prev }}" class="button prev">Previous</a>
+            <a href="{{ link_prev }}" id="previous-link" class="button prev">Previous</a>
         {% endif %}
 
         {% if link_next %}
-            <a href="{{ link_next }}" class="button next">Next</a>
+            <a href="{{ link_next }}" id="next-link" class="button next">Next</a>
         {% endif %}
 
         {% if person.image|thumbnail_url:"big_image" %}
-            <img src="{{ person.image|thumbnail_url:"big_image" }}" alt="{{ person.name }} - {{ person.description }}" />
+            <img src="{{ person.image|thumbnail_url:"big_image" }}" width="400" height="400" alt="{{ person.name }} - {{ person.description }}" />
         {% else  %}
-            <img src="{% static "img/noimage.png" %}" alt="{{ person.name }} - {{ person.description }}" />
+            <img src="{% static "img/noimage.png" %}" width="400" height="400" alt="{{ person.name }} - {{ person.description }}" />
         {% endif %}
     <p>
     <p>
