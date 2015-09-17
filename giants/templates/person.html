@@ -6,8 +6,14 @@
     <span>{{ current_date|date:"F jS" }}</span>
     <h1>{{ person.name|title }}</h1>
     <p class="image">
-        <button type="button" class="prev">Previous</button>
-        <button type="button" class="next">Next</button>
+        {% if link_prev %}
+            <a href="{{ link_prev }}" class="button prev">Previous</a>
+        {% endif %}
+
+        {% if link_next %}
+            <a href="{{ link_next }}" class="button next">Next</a>
+        {% endif %}
+
         {% if person.image|thumbnail_url:"big_image" %}
             <img src="{{ person.image|thumbnail_url:"big_image" }}" alt="{{ person.name }} - {{ person.description }}" />
         {% else  %}

@@ -34,9 +34,23 @@ def person(request, template_name='person.html', month=None, day=None, name=None
     date_string = u'%s-%s-%s' % (time.strftime("%Y"), month, day)
     current_date = datetime.datetime.strptime(date_string, "%Y-%m-%d").date()
 
+    try:
+        yesterday = current_date - datetime.timedelta(days=1)
+        person_of_yesterday = Person.objects.get(display_month=yesterday.month, display_day=yesterday.day)
+    except Person.DoesNotExist:
+        person_of_yesterday = None
+
+    try:
+        tomorrow = current_date + datetime.timedelta(days=1)
+        person_of_tomorrow = Person.objects.get(display_month=tomorrow.month, display_day=tomorrow.day)
+    except Person.DoesNotExist:
+        person_of_tomorrow = None
+
     context = {
         'person': person_of_today,
         'current_date': current_date,
+        'link_prev': person_of_yesterday.get_url() if person_of_yesterday else None,
+        'link_next': person_of_tomorrow.get_url() if person_of_tomorrow else None,
     }
 
     return render(request, template_name, context)
