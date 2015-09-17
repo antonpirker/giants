@@ -40,4 +40,11 @@ class PersonAdmin(admin.ModelAdmin):
     thumbnail.allow_tags = True
     thumbnail.short_description = 'Image'
 
+
+    def display_date(self, obj):
+        if obj.display_month and obj.display_day:
+            return u'%02d-%02d' % (obj.display_month, obj.display_day)
+
+        return None
+
 admin.site.register(Person, PersonAdmin)

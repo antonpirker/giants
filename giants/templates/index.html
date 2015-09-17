@@ -1,3 +1,4 @@
+{% load thumbnail %}
 <html>
 <head>
     <meta charset="utf-8">
@@ -17,7 +18,6 @@
         }
         html {
             background-color: #444;
-            /*background: url(img/giants.jpg) no-repeat center center fixed;*/
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -132,23 +132,27 @@
 </head>
 <body>
     <header>
-        <h2>Giants of IT</sup></h2>
+        <h2>Giants of IT</h2>
         <p>
             We all stand on the shoulders of giants. Here are the giants of IT. One each day.
         </p>
     </header>
     <section>
-        <span>September 12th</span>
-        <h1>Doug Crockford</h1>
+        <span>{{ current_date|date:"F jS" }}</span>
+        <h1>{{ person.name|title }}</h1>
         <p class="image">
             <button type="button" class="prev">Previous</button>
             <button type="button" class="next">Next</button>
-            <img src="img/Douglas_Crockford.jpg"/>
+            <img src="{{ person.image|thumbnail_url:"big_image" }}" alt="{{ person.name }}" />
         <p>
         <p>
-            This is probably the coolest there is, he invented this and that and also wrote this book. Just a great guy.
+            {{ person.description }}
             <span>
-                <a href="http://en.wikipedia.org/wiki/Douglas_Crockford">More information about Doug Crockford on Wikipedia</a>
+                <a href="{{ person.wikipedia_link }}" target="_blank">More information about {{ person.name|title }} on Wikipedia</a>
+                {% if person.additional_link %}
+                    <br/>
+                    <a href="{{ person.additional_link }}" target="_blank">Yet another link. (Check it out, it's worthwhile)</a>
+                {% endif %}
             </span>
         </p>
     </section>

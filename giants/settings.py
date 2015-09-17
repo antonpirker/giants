@@ -123,6 +123,7 @@ SHORT_DESC_LENGTH = 80
 THUMBNAIL_ALIASES = {
     '': {
         'admin_thumbnail': {'size': (60, 60), 'crop': ',10', 'upscale': True},
+        'big_image': {'size': (400, 400), 'crop': ',10', 'upscale': True},
     },
 }
 
