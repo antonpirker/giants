@@ -4,7 +4,9 @@ import datetime
 
 import pytz
 
+from django.core.urlresolvers import reverse
 from django.db import models
+from django.utils.text import slugify
 
 
 
@@ -41,3 +43,13 @@ class Person(models.Model):
         self.modified = datetime.datetime.utcnow().replace(tzinfo=pytz.utc)
 
         super(Person, self).save(*args, **kwargs)
+
+    def get_url(self):
+        """
+        Returns the (long) URL of a person
+        """
+        url = reverse('person', kwargs={'month': '%02d' % self.display_month,
+                                        'day': '%02d' % self.display_day,
+                                        'name': slugify(self.name)})
+
+        return url
