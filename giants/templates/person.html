@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load thumbnail %}
+{% load static thumbnail %}
 
 {% block content %}
     <span>{{ current_date|date:"F jS" }}</span>
@@ -8,7 +8,11 @@
     <p class="image">
         <button type="button" class="prev">Previous</button>
         <button type="button" class="next">Next</button>
-        <img src="{{ person.image|thumbnail_url:"big_image" }}" alt="{{ person.name }} - {{ person.description }}" />
+        {% if person.image|thumbnail_url:"big_image" %}
+            <img src="{{ person.image|thumbnail_url:"big_image" }}" alt="{{ person.name }} - {{ person.description }}" />
+        {% else  %}
+            <img src="{% static "img/noimage.png" %}" alt="{{ person.name }} - {{ person.description }}" />
+        {% endif %}
     <p>
     <p>
         {{ person.description }}
