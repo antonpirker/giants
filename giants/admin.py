@@ -1,5 +1,7 @@
 # encoding=utf-8
 
+import datetime
+
 from django.conf import settings
 from django.contrib import admin
 
@@ -10,7 +12,7 @@ from giants.models import Person
 
 
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('thumbnail', 'name', 'short_description', 'display_date', 'clickable_wikipedia_link')
+    list_display = ('thumbnail', 'name', 'short_description', 'display_order', 'display_date', 'clickable_wikipedia_link')
 
     def short_description(self, obj):
         return u'%s...' % obj.description[:settings.SHORT_DESC_LENGTH] \
@@ -42,9 +44,9 @@ class PersonAdmin(admin.ModelAdmin):
 
 
     def display_date(self, obj):
-        if obj.display_month and obj.display_day:
-            return u'%02d-%02d' % (obj.display_month, obj.display_day)
+        start_date = settings.SITE_START_DATE
+        d = start_date + datetime.timedelta(days=obj.display_order)
 
-        return None
+        return d
 
 admin.site.register(Person, PersonAdmin)

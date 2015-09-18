@@ -3,6 +3,7 @@
 import datetime
 import time
 
+from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.text import slugify
 from django.http import HttpResponseForbidden
@@ -16,9 +17,8 @@ def home(request):
     """
     Just redirects to the person of the current day
     """
-    month = time.strftime("%m")
-    day = time.strftime("%d")
-    person = Person.objects.get(display_month=month, display_day=day)
+    time_online = datetime.datetime.now().date() - settings.SITE_START_DATE
+    person = Person.objects.get(display_order=time_online.days)
 
     return redirect(person.get_url())
 
@@ -27,11 +27,14 @@ def person(request, template_name='person.html', month=None, day=None, name=None
     """
     Displays one person.
     """
-    person_of_today = get_object_or_404(Person, display_month=month, display_day=day)
-
-    date_string = u'%s-%s-%s' % (time.strftime("%Y"), month, day)
-    current_date = datetime.datetime.strptime(date_string, "%Y-%m-%d").date()
     today = datetime.datetime.now().date()
+
+    date_string = u'%s-%s-%s' % (settings.SITE_START_DATE.year, month, day)
+    current_date = datetime.datetime.strptime(date_string, "%Y-%m-%d").date()
+
+    display_order = (current_date - settings.SITE_START_DATE).days
+
+    person_of_today = get_object_or_404(Person, display_order=display_order)
 
     # do not allow to look into the future
     if current_date > today:
@@ -48,8 +51,7 @@ def person(request, template_name='person.html', month=None, day=None, name=None
         return redirect(person_of_today.get_url(), permanent=True)
 
     try:
-        yesterday = current_date - datetime.timedelta(days=1)
-        person_of_yesterday = Person.objects.get(display_month=yesterday.month, display_day=yesterday.day)
+        person_of_yesterday = Person.objects.get(display_order=display_order-1)
 
     except Person.DoesNotExist:
         person_of_yesterday = None
@@ -60,7 +62,7 @@ def person(request, template_name='person.html', month=None, day=None, name=None
             # no links into the future
             person_of_tomorrow = None
         else:
-            person_of_tomorrow = Person.objects.get(display_month=tomorrow.month, display_day=tomorrow.day)
+            person_of_tomorrow = Person.objects.get(display_order=display_order+2)
 
     except Person.DoesNotExist:
         person_of_tomorrow = None

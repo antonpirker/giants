@@ -18,12 +18,13 @@ class Person(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
     description = models.CharField(max_length=2000, null=True, blank=True)
     image = models.ImageField(upload_to='person_images', null=True, blank=True)
+    image_attribution = models.CharField(max_length=2000, null=True, blank=True)
+    is_image_is_from_wikipedia = models.BooleanField(default=False)
 
     wikipedia_link = models.CharField(max_length=1000, null=True, blank=True)
     additional_link = models.CharField(max_length=1000, null=True, blank=True)
 
-    display_month = models.IntegerField(null=True, blank=True, db_index=True)
-    display_day = models.IntegerField(null=True, blank=True, db_index=True)
+    display_order = models.IntegerField(null=True, blank=True, db_index=True)
 
     created = models.DateTimeField(editable=False, null=False, blank=False)
     modified = models.DateTimeField(editable=False, null=False, blank=False)
@@ -45,12 +46,19 @@ class Person(models.Model):
 
         super(Person, self).save(*args, **kwargs)
 
+    @property
+    def display_date(self):
+        """
+        """
+        d = settings.SITE_START_DATE + datetime.timedelta(days=self.display_order)
+        return d
+
     def get_url(self):
         """
         Returns the (long) URL of a person
         """
-        url = reverse('person', kwargs={'month': '%02d' % self.display_month,
-                                        'day': '%02d' % self.display_day,
+        url = reverse('person', kwargs={'month': '%02d' % self.display_date.month,
+                                        'day': '%02d' % self.display_date.day,
                                         'name': slugify(self.name)})
 
         return url

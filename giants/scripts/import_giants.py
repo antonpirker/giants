@@ -28,7 +28,7 @@ def run():
 
     gc = gspread.authorize(credentials)
 
-    worksheet = gc.open('Developers - We stand on the shoulders of giants').sheet1
+    worksheet = gc.open('Giants of IT - We stand on the shoulders of giants.').sheet1
 
     count = worksheet.row_count-1
     for idx in range(1, count):
@@ -36,8 +36,14 @@ def run():
 
         try:
             person, created = Person.objects.get_or_create(name=row[0])
+            person.display_order = idx
             person.description = row[1]
             person.wikipedia_link = row[2]
+            try:
+                person.additional_link = row[3]
+            except:
+                pass
+
             person.save()
 
         except IndexError:  # catch empty rows
