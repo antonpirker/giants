@@ -1,14 +1,12 @@
 # coding=utf-8
 
 import datetime
-import time
 
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.text import slugify
 from django.http import HttpResponseForbidden
 from django.template import RequestContext
-
 
 from models import Person
 
@@ -18,9 +16,9 @@ def home(request):
     Just redirects to the person of the current day
     """
     time_online = datetime.datetime.now().date() - settings.SITE_START_DATE
-    person = Person.objects.get(display_order=time_online.days)
+    current_person = Person.objects.get(display_order=time_online.days)
 
-    return redirect(person.get_url())
+    return redirect(current_person.get_url())
 
 
 def person(request, template_name='person.html', month=None, day=None, name=None):
