@@ -19,7 +19,7 @@ class Person(models.Model):
     description = models.CharField(max_length=2000, null=True, blank=True)
     image = models.ImageField(upload_to='person_images', null=True, blank=True)
     image_attribution = models.CharField(max_length=2000, null=True, blank=True)
-    is_image_is_from_wikipedia = models.BooleanField(default=False)
+    is_image_from_wikipedia = models.BooleanField(default=False)
 
     wikipedia_link = models.CharField(max_length=1000, null=True, blank=True)
     additional_link = models.CharField(max_length=1000, null=True, blank=True)

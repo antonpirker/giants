@@ -38,6 +38,10 @@
         {% else  %}
             <a href="{{ person.wikipedia_link }}" target="_blank"><img src="{% static "img/noimage.png" %}" width="400" height="400" alt="{{ person.name }} - {{ person.description }}" /></a>
         {% endif %}
+
+        {% if person.is_image_from_wikipedia %}
+            <br/><small>Image taken from <a href="{{ person.wikipedia_link }}">Wikipedia</a></small>
+        {% endif %}
     </p>
     <p>
         {{ person.description }}

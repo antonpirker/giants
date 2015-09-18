@@ -43,7 +43,7 @@ def run():
 
                 page = requests.get(image_url)
                 person.image.save(image_name, ContentFile(page.content))
-                person.is_image_is_from_wikipedia = True
+                person.is_image_from_wikipedia = True
                 person.save()
             except (AttributeError, IndexError):
                 pass
