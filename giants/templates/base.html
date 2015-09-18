@@ -5,7 +5,7 @@
     <style>
         /*
         Color Palette:
-        https://color.adobe.com/Cidade-De-Deus-color-theme-937275/?showPublished=true;
+        https://color.adobe.com/Firenze-color-theme-24198/?showPublished=true
         */
         * {
             box-sizing: border-box;
@@ -25,19 +25,20 @@
             background-size: cover;
         }
         header {
-            background-color: #924D40;
-            color: #DDD4C2;
+            background-color: #8E2800;
+            color: #FFF0A5;
             padding: 1vmin;
             width: 100%;
         }
         header h2, header p {
             margin: 0;
+            text-align: center;
         }
         header a {
-            color: #DDD4C2;;
+            color: #DDD4C2;
         }
         section {
-            background-color: #DDD4C2;
+            background-color: #FFF0A5;
             max-height: 90vh;
             min-height: 70vmax;
             padding: 4em 1em;
@@ -52,7 +53,7 @@
             margin: 3vw 5vw;
         }
         h1 {
-            color: #924D40;
+            color: #8E2800;
             font: 400 60px/1.3 'Bevan', Georgia, serif;
             font-size: 5.9vmin;
             margin: 1vmin 0;
@@ -60,7 +61,8 @@
             width: 100%;
         }
         h2 {
-            font-size: 3vmin;
+            font-size: 4vmin;
+            font: 400 4vmin/1.3 'Bevan', Georgia, serif;
         }
         h3 {
             color: #444;
@@ -83,7 +85,7 @@
             display: block;
         }
         a {
-            color: #924D40;
+            color: #468966;
         }
         footer {
             color: #fff;
@@ -92,7 +94,11 @@
             width: 100%;
         }
         footer a {
-            color: #DDD4C2;
+            color: #FFF0A5;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
         }
         p.image {
             display: block;
@@ -126,6 +132,33 @@
             transform: rotate(180deg);
             right: 0vmin;
         }
+
+        .social {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .social li {
+            display: inline;
+        }
+        .social li a {
+            background-repeat: no-repeat;
+            background-size: 25px 25px;
+            display: inline-block;
+            height: 26px;
+            overflow: hidden;
+            text-indent: 110%;
+            white-space: nowrap;
+            width: 26px;
+        }
+        .social li.fb a {
+            background-image: url('/static/img/fb.svg');
+            margin-right: 1em;
+        }
+        .social li.twitter a {
+            background-image: url('/static/img/twitter.svg');
+        }
     </style>
 
     <title>{% block site_title %}{{ SITE_NAME }}{% endblock site_title %}</title>
@@ -147,7 +180,9 @@
     </section>
 
     <footer>
-        A small side project of <a href="http://www.anton-pirker.at/" target="_blank">Anton Pirker</a> &bull; 'standing on the shoulders of giants' is a <a href="https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants" target="_blank">very old metaphor</a> &bull; Someone is missing in the list? <a href="https://docs.google.com/a/ignaz.at/forms/d/1IcxdJAawj5VrjWcLJgepcelnfaLnQLP_M2QZplCcm44/viewform?usp=send_form" target="blank">Go fill out the form!</a>
+        A small side project of <a href="http://www.anton-pirker.at/" target="_blank">Anton Pirker</a> &bull; 'standing on the shoulders of giants' is a <a href="https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants" target="_blank">very old metaphor</a> &bull; Someone is missing in the list? <a href="https://docs.google.com/a/ignaz.at/forms/d/1IcxdJAawj5VrjWcLJgepcelnfaLnQLP_M2QZplCcm44/viewform?usp=send_form" target="blank">Submit a person!</a>
+        <br/><br/>
+        <div>Icons made by <a href="http://www.flaticon.com/authors/bogdan-rosu" title="Bogdan Rosu">Bogdan Rosu</a> and <a href="http://www.flaticon.com/authors/simpleicon" title="SimpleIcon">SimpleIcon</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
     </footer>
 
     <script>
