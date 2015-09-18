@@ -4,6 +4,7 @@ import datetime
 
 import pytz
 
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.text import slugify
@@ -53,3 +54,9 @@ class Person(models.Model):
                                         'name': slugify(self.name)})
 
         return url
+
+    def get_full_url(self):
+        """
+        Returns the full url (including protocoll and domain) of a person
+        """
+        return u'%s%s' % (settings.SITE_URL, self.get_url())

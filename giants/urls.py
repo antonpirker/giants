@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 from . import views
+from .feeds import PersonFeed
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -28,6 +29,8 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^(?P<month>[0-9]{2})-(?P<day>[0-9]{2})$', views.person, name='person-short-url'),
     url(r'^(?P<month>[0-9]{2})-(?P<day>[0-9]{2})/(?P<name>[\w-]+)$', views.person, name='person'),
+
+    url(r'^feed$', PersonFeed()),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
