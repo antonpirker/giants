@@ -1,5 +1,7 @@
 # encoding=utf-8
 
+import datetime
+
 from django.conf import settings
 from django.contrib.syndication.views import Feed
 
@@ -12,7 +14,9 @@ class PersonFeed(Feed):
     description = 'We all stand on the shoulders of giants. Here are the giants of IT. One each day.'
 
     def items(self):
-        return Person.objects.all()
+        import ipdb; ipdb.set_trace()
+        time_online = datetime.datetime.now().date() - settings.SITE_START_DATE
+        return Person.objects.filter(display_order__lte=time_online.days).order_by('-display_order')
 
     def item_title(self, item):
         return item.name
