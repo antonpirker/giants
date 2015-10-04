@@ -57,8 +57,7 @@ class Person(models.Model):
         """
         Returns the (long) URL of a person
         """
-        url = reverse('person', kwargs={'month': '%02d' % self.display_date.month,
-                                        'day': '%02d' % self.display_date.day,
+        url = reverse('person', kwargs={'display_order': self.display_order,
                                         'name': slugify(self.name)})
 
         return url

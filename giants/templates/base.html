@@ -177,7 +177,7 @@
 
 <body>
     <header>
-        <h2><a href="/">{{ SITE_NAME }}</a></h2>
+        <h2><a href="/">{{ SITE_NAME|default:"Giants of IT" }}</a></h2>
         <p>
             We all stand on the shoulders of giants. Here are the giants of IT. One each day.
         </p>
@@ -198,19 +198,20 @@
             e = e || window.event;
 
             var LEFT = '37',
-                RIGHT = '39';
+                RIGHT = '39',
+                link = '';
 
             if (e.keyCode == LEFT) {
                 try {
-                    var link = document.getElementById('previous-link').href;
+                    link = document.getElementById('previous-link').href;
                     location = link;
-                }catch(TypeError) {};
+                }catch(TypeError) {}
 
             } else if (e.keyCode == RIGHT) {
                 try {
-                    var link = document.getElementById('next-link').href;
+                    link = document.getElementById('next-link').href;
                     location = link;
-                }catch(TypeError) {};
+                }catch(TypeError) {}
             }
         };
 

@@ -15,23 +15,19 @@ def home(request):
     """
     Just redirects to the person of the current day
     """
-    time_online = datetime.datetime.now().date() - settings.SITE_START_DATE
-    current_person = Person.objects.get(display_order=time_online.days)
+    today = datetime.datetime.now().date()
+    days_online = (today - settings.SITE_START_DATE).days % Person.objects.all().count()
+    current_person = Person.objects.get(display_order=days_online)
 
     return redirect(current_person.get_url())
 
 
-def person(request, template_name='person.html', month=None, day=None, name=None):
+def person(request, template_name='person.html', display_order=None, name=None):
     """
     Displays one person.
     """
     today = datetime.datetime.now().date()
-
-    date_string = u'%s-%s-%s' % (settings.SITE_START_DATE.year, month, day)
-    current_date = datetime.datetime.strptime(date_string, "%Y-%m-%d").date()
-
-    display_order = (current_date - settings.SITE_START_DATE).days
-
+    current_date = settings.SITE_START_DATE + datetime.timedelta(days=int(display_order))
     person_of_today = get_object_or_404(Person, display_order=display_order)
 
     # do not allow to look into the future
@@ -49,7 +45,7 @@ def person(request, template_name='person.html', month=None, day=None, name=None
         return redirect(person_of_today.get_url(), permanent=True)
 
     try:
-        person_of_yesterday = Person.objects.get(display_order=display_order-1)
+        person_of_yesterday = Person.objects.get(display_order=int(display_order)-1)
 
     except Person.DoesNotExist:
         person_of_yesterday = None
@@ -60,7 +56,7 @@ def person(request, template_name='person.html', month=None, day=None, name=None
             # no links into the future
             person_of_tomorrow = None
         else:
-            person_of_tomorrow = Person.objects.get(display_order=display_order+2)
+            person_of_tomorrow = Person.objects.get(display_order=int(display_order)+1)
 
     except Person.DoesNotExist:
         person_of_tomorrow = None

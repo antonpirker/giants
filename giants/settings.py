@@ -32,7 +32,7 @@ SITE_URL = 'http://www.giantsofit.org'
 SITE_NAME = 'Giants of IT'
 
 # when is the first person displayed?
-SITE_START_DATE = datetime.date(year=2015, month=9, day=1)
+SITE_START_DATE = datetime.date(year=2015, month=10, day=1)
 
 ALLOWED_HOSTS = [
     'localhost:8000',

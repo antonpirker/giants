@@ -27,8 +27,9 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^$', views.home, name='home'),
-    url(r'^(?P<month>[0-9]{2})-(?P<day>[0-9]{2})$', views.person, name='person-short-url'),
-    url(r'^(?P<month>[0-9]{2})-(?P<day>[0-9]{2})/(?P<name>[\w-]+)$', views.person, name='person'),
+    #url(r'^(?P<month>[0-9]{2})-(?P<day>[0-9]{2})$', views.person, name='person-short-url'),
+    url(r'^(?P<display_order>[0-9]+)$', views.person, name='person-short-url'),
+    url(r'^(?P<display_order>[0-9]+)/(?P<name>[\w-]+)$', views.person, name='person'),
 
     url(r'^feed$', PersonFeed()),
 
