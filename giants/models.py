@@ -91,6 +91,11 @@ class Person(models.Model):
             # draw person image
             if self.image:
                 person_file = get_thumbnailer(self.image).get_thumbnail(settings.THUMBNAIL_ALIASES['']['big_image']).file.name
+                if not person_file:
+                    # the person_file is empty on the first creation of the thumbnail.
+                    # i know this is a ugly hack, but its just a stupid side project website and therefore ok.
+                    person_file = get_thumbnailer(self.image).get_thumbnail(settings.THUMBNAIL_ALIASES['']['big_image']).file.name
+
             else:
                 person_file = os.path.join(settings.BASE_DIR, 'static', 'img', 'noimage.png')
 
