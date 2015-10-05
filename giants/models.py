@@ -48,13 +48,6 @@ class Person(models.Model):
 
         super(Person, self).save(*args, **kwargs)
 
-    @property
-    def display_date(self):
-        """
-        """
-        d = settings.SITE_START_DATE + datetime.timedelta(days=self.display_order)
-        return d
-
     def get_url(self):
         """
         Returns the (long) URL of a person
@@ -66,14 +59,15 @@ class Person(models.Model):
 
     def get_full_url(self):
         """
-        Returns the full url (including protocoll and domain) of a person
+        Returns the full url (including protocol and domain) of a person
         """
         return u'%s%s' % (settings.SITE_URL, self.get_url())
 
     def get_sharing_image(self):
         """
+        Returns the url to a image that should be used for social sharing.
+        If the image does not exist it will be created.
         """
-        import ipdb; ipdb.set_trace()
         sharing_path = os.path.join(settings.MEDIA_ROOT, 'person_images_sharing')
         sharing_image_path = os.path.join(sharing_path, '%s.jpg' % slugify(self.name))
 
@@ -94,7 +88,6 @@ class Person(models.Model):
             mask_draw = ImageDraw.Draw(mask)
             mask_draw.ellipse([(0, 0), (400, 400)], fill=(255, 255, 255, 255))
 
-
             # draw person image
             if self.image:
                 person_file = get_thumbnailer(self.image).get_thumbnail(settings.THUMBNAIL_ALIASES['']['big_image']).file.name
@@ -114,7 +107,7 @@ class Person(models.Model):
             w, h = draw.textsize(settings.SITE_NAME, font=font2)
             draw.rectangle([((WIDTH-w)/2-50, HEIGHT-h-20), ((WIDTH-w)/2+w+50, HEIGHT)], fill='#8E2800')
 
-            # draw giants 'logo'
+            # draw giants of IT 'logo'
             draw.text((((WIDTH-w)/2), HEIGHT-h-15), settings.SITE_NAME, font=font2, fill='#FFF0A5')
 
             background.save(sharing_image_path)
