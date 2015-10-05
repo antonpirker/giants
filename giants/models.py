@@ -81,7 +81,7 @@ class Person(models.Model):
 
             WIDTH = 1200
             HEIGHT = 630
-            background = Image.new('RGB', (WIDTH, HEIGHT), '#FFF0A5')
+            background = Image.new('RGB', (WIDTH, HEIGHT), '#fffdd4')
 
             # create circle mask for person image
             mask = Image.new('RGBA', (400, 400), color=(255, 255, 255, 0))
@@ -113,7 +113,7 @@ class Person(models.Model):
             draw.rectangle([((WIDTH-w)/2-50, HEIGHT-h-20), ((WIDTH-w)/2+w+50, HEIGHT)], fill='#8E2800')
 
             # draw giants of IT 'logo'
-            draw.text((((WIDTH-w)/2), HEIGHT-h-15), settings.SITE_NAME, font=font2, fill='#FFF0A5')
+            draw.text((((WIDTH-w)/2), HEIGHT-h-15), settings.SITE_NAME, font=font2, fill='#fffdd4')
 
             background.save(sharing_image_path)
 
