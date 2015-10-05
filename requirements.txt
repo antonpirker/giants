@@ -8,6 +8,7 @@ lxml==3.4.4  # for parsing html/xml
 oauth2client==1.5.0  # for logging into google sheets
 Pillow==2.9.0  # for image manipulation
 psycopg2==2.6.1  # for connecting to postgres
-pytz==2015.4  # for timezone aware dates
+pytz==2015.4  # for tipipzone aware dates
 pyOpenSSL==0.15.1
 requests==2.7.0  # for making http requests
+python-memcached==1.57  # caching
