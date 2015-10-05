@@ -11,4 +11,3 @@ psycopg2==2.6.1  # for connecting to postgres
 pytz==2015.4  # for timezone aware dates
 pyOpenSSL==0.15.1
 requests==2.7.0  # for making http requests
-Pillow==2.9.0  # image manipulation
