@@ -7,3 +7,5 @@
 config/*
 media/*
 static/*
+
+giants/settings_local.py
