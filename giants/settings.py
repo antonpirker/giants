@@ -103,6 +103,7 @@ DATABASES = {
 }
 
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
@@ -140,3 +141,8 @@ THUMBNAIL_ALIASES = {
 }
 
 
+
+try:
+    from settings_local import *
+except ImportError as e:
+    print "WARNING: ImportError when trying to import settings_local: |", e, "|"
