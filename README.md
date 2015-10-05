@@ -8,3 +8,5 @@ So I started collecting names and Wikipedia links and created this little websit
 ## Submit a person
 
 This list is not complete at all. If you know someone who has done really great stuff in the history of IT please add her or him to the list. You can submit a person here: https://docs.google.com/a/ignaz.at/forms/d/1IcxdJAawj5VrjWcLJgepcelnfaLnQLP_M2QZplCcm44/viewform
+
+Thank you!
