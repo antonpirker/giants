@@ -112,6 +112,6 @@ class Person(models.Model):
 
             background.save(sharing_image_path)
 
-        sharing_image_url = os.path.join(settings.MEDIA_URL,'person_image_sharing/', '%s.jpg' % slugify(self.name))
+        sharing_image_url = os.path.join(settings.MEDIA_URL,'person_images_sharing/', '%s.jpg' % slugify(self.name))
 
         return sharing_image_url
