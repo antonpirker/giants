@@ -29,7 +29,7 @@ class PersonFeed(Feed):
         return item.name
 
     def item_description(self, item):
-        desc = '<![CDATA[%(text)s\n\n<a href="%(link)s">%(link)s</a>]]>' % {
+        desc = '<![CDATA[ %(text)s\n\n<a href="%(link)s">%(link)s</a> ]]>' % {
             'text': item.description,
             'link': item.wikipedia_link
         }
